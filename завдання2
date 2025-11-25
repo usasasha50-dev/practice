@@ -1,0 +1,64 @@
+#include <iostream>
+#include <cmath> // Для використання M_PI (Pi)
+#include <iomanip> // Для форматування виводу
+
+// Якщо M_PI не визначено, використовуємо константу
+#ifndef M_PI
+    #define M_PI 3.14159265358979323846
+#endif
+
+int main() {
+    int n;
+    double S = 0.0; // Площа
+    
+    std::cout << "Введіть номер фігури (1-прямокутник, 2-трикутник, 3-трапеція, 4-коло): ";
+    std::cin >> n;
+
+    std::cout << std::fixed << std::setprecision(2);
+
+    switch (n) {
+        case 1: { // Прямокутник: S = ab
+            double a, b;
+            std::cout << "Введіть довжини сторін a та b: ";
+            std::cin >> a >> b;
+            S = a * b;
+            std::cout << "Площа прямокутника (S = ab) = " << S << std::endl;
+            break;
+        }
+        case 2: { // Трикутник: S = ah/2
+            double a, h;
+            std::cout << "Введіть основу a та висоту h: ";
+            std::cin >> a >> h;
+            S = (a * h) / 2.0;
+            std::cout << "Площа трикутника (S = ah/2) = " << S << std::endl;
+            break;
+        }
+        case 3: { // Трапеція: S = (a+b)/2 * h
+            double a, b, h;
+            std::cout << "Введіть основи a, b та висоту h: ";
+            std::cin >> a >> b >> h;
+            S = ((a + b) / 2.0) * h;
+            std::cout << "Площа трапеції (S = (a+b)/2 * h) = " << S << std::endl;
+            break;
+        }
+        case 4: { // Коло: S = pi * R^2
+            double R;
+            std::cout << "Введіть радіус R: ";
+            std::cin >> R;
+            S = M_PI * R * R;
+            std::cout << "Площа кола (S = pi * R^2) = " << S << std::endl;
+            break;
+        }
+        default: {
+            std::cout << "Некоректний номер фігури. Введіть число від 1 до 4." << std::endl;
+            break;
+        }
+    }
+
+    // Вивід загального результату, якщо він був обчислений
+    if (n >= 1 && n <= 4) {
+        std::cout << "\nЗагальна площа S = " << S << std::endl;
+    }
+
+    return 0;
+}
