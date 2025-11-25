@@ -1,0 +1,31 @@
+#include <iostream>
+#include <cmath> // Для використання tan, abs, pow, log
+#include <iomanip> // Для форматування виводу
+
+int main() {
+    double x;
+    double y;
+
+    std::cout << "Введіть значення x: ";
+    std::cin >> x;
+
+    if (x < 0) {
+        // Випадок 1: x < 0
+        y = tan(std::abs(x)); // tan(|x|)
+        std::cout << "Оскільки x < 0, використовується формула y = tg|x|." << std::endl;
+    } else if (x >= 0 && x <= 5) {
+        // Випадок 2: 0 <= x <= 5
+        y = pow(x, 3); // x^3
+        std::cout << "Оскільки 0 <= x <= 5, використовується формула y = x^3." << std::endl;
+    } else { // x > 5, оскільки x >= 5 і попередній if включає x=5. Якщо ж вважати x=5 включно в останній випадок, то "else if (x > 5)"
+        // Випадок 3: x >= 5 (або x > 5, якщо 0 <= x <= 5 охоплює x=5)
+        // Обчислення log_5(x) = log(x) / log(5)
+        y = std::log(x) / std::log(5.0); 
+        std::cout << "Оскільки x > 5, використовується формула y = log_5(x)." << std::endl;
+    }
+
+    std::cout << std::fixed << std::setprecision(4); // Встановлення точності
+    std::cout << "Значення складеної функції y(" << x << ") = " << y << std::endl;
+
+    return 0;
+}
