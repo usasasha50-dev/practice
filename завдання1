@@ -1,0 +1,49 @@
+#include <iostream>
+#include <iomanip> // Для форматування виводу
+
+int main() {
+    // Коефіцієнти системи
+    double a1 = 3, b1 = 2, c1 = 7;
+    double a2 = 4, b2 = -5, c2 = 40;
+
+    std::cout << "Система рівнянь:" << std::endl;
+    std::cout << a1 << "x + " << b1 << "y = " << c1 << std::endl;
+    std::cout << a2 << "x + " << b2 << "y = " << c2 << std::endl;
+
+    // Обчислення головного визначника (D або Delta)
+    double Delta = a1 * b2 - a2 * b1;
+    std::cout << "\nГоловний визначник Delta = " << Delta << std::endl;
+
+    if (Delta == 0) {
+        // Обчислення допоміжних визначників для перевірки
+        double Delta_x_check = c1 * b2 - c2 * b1;
+        double Delta_y_check = a1 * c2 - a2 * c1;
+
+        if (Delta_x_check == 0 && Delta_y_check == 0) {
+            std::cout << "Система має безліч розв'язків." << std::endl;
+        } else {
+            std::cout << "Система не має розв'язків." << std::endl;
+        }
+    } else {
+        // Обчислення визначника Delta_x
+        double Delta_x = c1 * b2 - c2 * b1;
+        
+        // Обчислення визначника Delta_y
+        double Delta_y = a1 * c2 - a2 * c1;
+
+        // Знаходження розв'язків
+        double x = Delta_x / Delta;
+        double y = Delta_y / Delta;
+
+        // Виведення результатів
+        std::cout << "Визначник Delta_x = " << Delta_x << std::endl;
+        std::cout << "Визначник Delta_y = " << Delta_y << std::endl;
+        
+        std::cout << std::fixed << std::setprecision(2); // Встановлення точності виводу
+        std::cout << "\nСистема має єдиний розв'язок:" << std::endl;
+        std::cout << "x = Delta_x / Delta = " << Delta_x << " / " << Delta << " = " << x << std::endl;
+        std::cout << "y = Delta_y / Delta = " << Delta_y << " / " << Delta << " = " << y << std::endl;
+    }
+
+    return 0;
+}
