@@ -1,0 +1,32 @@
+#include <iostream>
+
+int main() {
+    double num1, num2, num3;
+    int negative_count = 0; // Лічильник від'ємних чисел
+
+    std::cout << "Введіть перше число: ";
+    std::cin >> num1;
+    std::cout << "Введіть друге число: ";
+    std::cin >> num2;
+    std::cout << "Введіть третє число: ";
+    std::cin >> num3;
+
+    // Перевірка першого числа
+    if (num1 < 0) {
+        negative_count++;
+    }
+
+    // Перевірка другого числа
+    if (num2 < 0) {
+        negative_count++;
+    }
+
+    // Перевірка третього числа
+    if (num3 < 0) {
+        negative_count++;
+    }
+
+    std::cout << "\nЗ чисел " << num1 << ", " << num2 << ", " << num3 << " кількість від'ємних: " << negative_count << std::endl;
+
+    return 0;
+}
